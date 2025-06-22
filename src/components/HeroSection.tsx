@@ -38,7 +38,7 @@ const HeroSection = () => {
             className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto lg:mx-0 animate-slide-up"
             style={{ animationDelay: "200ms" }}
           >
-            A passionate third-year Computer Science student at Parul
+            A passionate Final-Year Computer Science student at Parul
             University, driven by enthusiasm for frontend development and Data
             Structures & Algorithms.
           </p>

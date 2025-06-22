@@ -10,22 +10,22 @@ type Skill = {
   icon: string;
 };
 
+const skills: Skill[] = [
+  { name: 'C', proficiency: 80, category: ['languages'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg' },
+  { name: 'Python', proficiency: 90, category: ['languages'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+  { name: 'HTML', proficiency: 90, category: ['frontend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
+  { name: 'CSS', proficiency: 85, category: ['frontend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
+  { name: 'JavaScript', proficiency: 75, category: ['frontend', 'languages'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
+  { name: 'Tailwind CSS', proficiency: 75, category: ['frontend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
+  { name: 'Bootstrap', proficiency: 85, category: ['frontend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
+  { name: 'React.js', proficiency: 65, category: ['frontend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
+  { name: 'Node.js', proficiency: 60, category: ['backend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+  { name: 'MongoDB', proficiency: 75, category: ['backend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
+];
+
 const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState<SkillCategory>('all');
   const [visibleSkills, setVisibleSkills] = useState<Skill[]>([]);
-
-  const skills: Skill[] = [
-    { name: 'C', proficiency: 80, category: ['languages'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg' },
-    { name: 'Python', proficiency: 90, category: ['languages'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
-    { name: 'HTML', proficiency: 90, category: ['frontend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
-    { name: 'CSS', proficiency: 85, category: ['frontend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-    { name: 'JavaScript', proficiency: 75, category: ['frontend', 'languages'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
-    { name: 'Tailwind CSS', proficiency: 75, category: ['frontend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original.svg' },
-    { name: 'Bootstrap', proficiency: 85, category: ['frontend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
-    { name: 'React.js', proficiency: 65, category: ['frontend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-    { name: 'Node.js', proficiency: 60, category: ['backend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-    { name: 'MongoDB', proficiency: 75, category: ['backend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
-  ];
 
   useEffect(() => {
     const filtered = skills.filter(skill =>

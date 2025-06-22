@@ -23,7 +23,7 @@ const AboutSection = () => {
             </h3>
             
             <p className="text-gray-600 dark:text-gray-400">
-              A Final-year Computer Science student at Parul University with a strong passion for frontend development 
+              A Final year Computer Science student at Parul University with a strong passion for frontend development 
               and Data Structures and Algorithms. My journey in tech is driven by solving challenging problems, 
               optimizing solutions, and continuously improving my skills.
             </p>

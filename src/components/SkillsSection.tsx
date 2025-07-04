@@ -20,6 +20,7 @@ const skills: Skill[] = [
   { name: 'Bootstrap', proficiency: 85, category: ['frontend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg' },
   { name: 'React.js', proficiency: 65, category: ['frontend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
   { name: 'Node.js', proficiency: 60, category: ['backend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
+  { name: 'Express.js', proficiency: 65, category: ['backend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
   { name: 'MongoDB', proficiency: 75, category: ['backend'], icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
 ];
 

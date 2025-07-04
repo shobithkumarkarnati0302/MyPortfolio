@@ -1,6 +1,7 @@
 import { ArrowDown, Mail, Github, Linkedin, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Typewriter } from 'react-simple-typewriter';
 
 const handleDownload = () => {
   const link = document.createElement("a");
@@ -24,7 +25,17 @@ const HeroSection = () => {
         <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left animate-fade-in">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-gray-900 dark:text-white animate-slide-up">
             Hi, I'm{" "}
-            <span className="text-portfolio-primary">Shobith Kumar</span>
+            <span className="text-portfolio-primary">
+              <Typewriter
+                words={['Shobith Kumar']}
+                loop={25}
+                cursor
+                cursorStyle="|"
+                typeSpeed={350}
+                deleteSpeed={35}
+                delaySpeed={1000}
+              />
+            </span>
           </h1>
 
           <h2

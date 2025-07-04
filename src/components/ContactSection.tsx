@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/components/ui/use-toast';
-
-const webhookURL = import.meta.env.VITE_N8N_WEBHOOK_URL;
+import emailjs from '@emailjs/browser';
 
 interface ContactFormData {
   name: string;
@@ -13,6 +12,10 @@ interface ContactFormData {
   subject: string;
   message: string;
 }
+
+const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -23,48 +26,41 @@ const ContactSection = () => {
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const form = useRef<HTMLFormElement>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch( webhookURL!, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) throw new Error('Failed to send data to webhook');
-
+    if (!form.current) return;
+    emailjs.sendForm(
+      serviceId,
+      templateId,
+      form.current,
+      publicKey
+    )
+    .then((result) => {
       toast({
         title: "Message sent successfully!",
         description: "Thank you for reaching out. I'll get back to you soon.",
       });
-
       setFormData({
         name: '',
         email: '',
         subject: '',
         message: ''
       });
-    } catch (error) {
+    }, (error) => {
       console.error('Error submitting message:', error);
       toast({
         title: "Failed to send message",
         description: "There was an error sending your message. Please try again later.",
         variant: "destructive",
       });
-    } finally {
-      setIsSubmitting(false);
-    }
+    });
   };
 
   const contactInfo = [
@@ -135,7 +131,7 @@ const ContactSection = () => {
               Send Me a Message
             </h3>
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form ref={form} onSubmit={sendEmail} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-gray-700 dark:text-gray-300 font-medium">

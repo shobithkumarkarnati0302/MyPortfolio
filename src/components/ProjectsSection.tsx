@@ -60,6 +60,21 @@ const ProjectsSection = () => {
     },
     {
       id: 3,
+      title: "urlShortner",
+      description: "A full-stack URL Shortener application built with the MERN stack. Easily convert long URLs into short, shareable links with optional custom aliases, expiry, and click tracking. Modern UI with Tailwind CSS.",
+      image: "https://ik.imagekit.io/shobithbunny/urlShortner.png?updatedAt=1751618784332",
+      techStack: ["MERN Stack", "React.js", "JavaScript", "Tailwind CSS", "MongoDb","Node.js","Express.js"],
+      features: [
+        "Shorten long URLs to unique,Custom alias support (e.g., sho.rt/myalias)",
+        "Click tracking for each short link",
+        "Redirection to original URLs",
+        "Modern, responsive UI (React + Tailwind CSS)",
+      ],
+      githubLink: "https://github.com/shobithkumarkarnati0302/urlShortner",
+      liveLink: "https://github.com/shobithkumarkarnati0302/urlShortner",
+    },
+    {
+      id: 4,
       title: "Spotify Clone",
       description: "A simple Spotify clone built using HTML, CSS, and JavaScript that mimics the core features of the Spotify platform.",
       image: "https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80",

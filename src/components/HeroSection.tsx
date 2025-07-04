@@ -3,15 +3,6 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Typewriter } from 'react-simple-typewriter';
 
-const handleDownload = () => {
-  const link = document.createElement("a");
-  link.href = "/Karnati-Shobith-Kumar.pdf";
-  link.download = "Resume-Karnati-Shobith.pdf";
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
-
 
 const HeroSection = () => {
   return (
@@ -63,14 +54,25 @@ const HeroSection = () => {
               <a href="mailto:shobithkumar2304@gmail.com">Contact Me</a>
             </Button>
 
-            <Button
+            {/* <Button
               variant="outline"
               className="border-portfolio-primary text-portfolio-primary hover:bg-portfolio-primary hover:text-white transition-all duration-300 transform hover:scale-105"
               onClick={handleDownload}
             >
               Download Resume
+            </Button> */}
+
+            <Button
+              variant="outline"
+              className="border-portfolio-primary text-portfolio-primary hover:bg-portfolio-primary hover:text-white transition-all duration-300 transform hover:scale-105"
+              asChild
+            >
+              <a href="/Karnati-Shobith-Kumar.pdf" target="_blank" rel="noopener noreferrer">
+                View Resume
+              </a>
             </Button>
           </div>
+          
 
           <div
             className="flex gap-4 justify-center lg:justify-start pt-4 animate-slide-up"

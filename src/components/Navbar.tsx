@@ -1,7 +1,7 @@
-
 import { useState, useEffect } from 'react';
 import { Menu, X, Github, Linkedin, Code2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Button } from './ui/button';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -145,6 +145,7 @@ const Navbar = () => {
           >
             <Linkedin className="w-6 h-6" />
           </a>
+          
         </div>
       </div>
     </nav>

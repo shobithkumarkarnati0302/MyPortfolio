@@ -12,6 +12,7 @@ interface Project {
   techStack: string[];
   features: string[];
   githubLink?: string;
+  githubLinks?: { frontend?: string; backend?: string };
   liveLink?: string;
   inProgress?: boolean;
 }
@@ -20,42 +21,44 @@ const ProjectsSection = () => {
   const projects: Project[] = [
     {
       id: 1,
-      title: "Spend Smart - Expense Tracker",
-      description: "A full-stack expense tracking web application to help users manage their finances efficiently.",
-      image: "https://images.unsplash.com/photo-1561414927-6d86591d0c4f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80",
-      techStack: ["MERN Stack", "TypeScript", "Vite", "Tailwind CSS", "Supabase"],
+      title: "CuraBot - Hospital Management System",
+      description: "Designed Frontend of a comprehensive hospital management system developed as final year project, featuring responsive role-based UI with seamless data flow integration and production-ready deployment.",
+      image: "https://images.unsplash.com/photo-1551190822-a9333d879b1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1170&q=80",
+      techStack: ["React.js", "TypeScript", "Vite", "Tailwind CSS", "Framer Motion", "React Router v6"],
       features: [
-        "AI Chatbot Integration (Upcoming)",
-        "User Authentication",
-        "Expense Tracking",
-        "Data Visualization",
-        "Category-Based Budgeting",
-        "Transaction History",
-        "Real-Time Updates",
-        "Responsive UI",
-        "Dark Mode Support"
+        "Role-Based User Interface",
+        "Responsive Design Architecture",
+        "RESTful API Integration",
+        "Smooth Animations with Framer Motion",
+        "Modern TypeScript Implementation",
+        "Production-Ready Deployment",
+        "Seamless Data Flow Management",
+        "Advanced Routing System",
+        "Hospital Workflow Optimization"
       ],
-      githubLink: "https://github.com/shobithkumarkarnati0302/SpendSmart",
-      liveLink: "https://spendsmart-shobith.vercel.app/",
+      githubLinks: {
+        frontend: "https://github.com/shobithkumarkarnati0302/CuraBot-Frontend.git",
+        backend: "https://github.com/shobithkumarkarnati0302/CuraBot-Backend.git"
+      },
+      liveLink: "https://curabot-project.vercel.app/",
     },
     {
       id: 2,
-      title: "CodeOscan",
-      description: "An AI-powered Full-stack AI code analysis tool.Enables users to analyze code complexity, receive improvement suggestions, validate code language, and manage a personalized history with features like favorites, notes.",
+      title: "CodeOscan - AI Code Analyzer",
+      description: "Full-stack AI-powered code analysis platform that leverages Google Generative AI to provide intelligent code evaluation, complexity assessment, and optimization recommendations for 13+ programming languages.",
       image: "https://en.idei.club/uploads/posts/2023-03/1679504314_en-idei-club-p-programmer-wallpaper-dizain-vkontakte-4.jpg",
-      techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Supabase","ShadCN UI","Genkit(Google's Gemini Model)"],
+      techStack: ["React 19", "Node.js", "Express.js", "MongoDB", "Google Generative AI", "Tailwind CSS", "JWT", "Vite"],
       features: [
-        "AI-Powered Complexity Analysis",
-        "Detailed Explanations",
-        "Multi-Language Support",
-        "code language validation",
-        "Personalized History Management",
-        "Favorites and Notes",
-        "User-Friendly Interface",
-        "Responsive Design",
-        "Dark Mode Support",
+        "AI-Powered Code Analysis with Google Generative AI",
+        "Time & Space Complexity Detection",
+        "Multi-Language Support (13+ Languages)",
+        "Optimization Suggestions & Code Explanations",
+        "Secure JWT Authentication & User Management",
+        "Analysis History with Personal Notes",
+        "Shareable Analysis Results",
+        "Modern Responsive UI with Syntax Highlighting",
       ],
-      githubLink: "https://github.com/shobithkumarkarnati0302/codeOscan.git",
+      githubLink: "https://github.com/shobithkumarkarnati0302/CodeOscan",
       liveLink: "https://code-oscan.vercel.app/",
     },
     {
@@ -121,7 +124,32 @@ const ProjectsSection = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                     <div className="p-4 w-full">
                       <div className="flex gap-3 justify-center">
-                        {project.githubLink && (
+                        {project.githubLinks ? (
+                          <>
+                            {project.githubLinks.frontend && (
+                              <a 
+                                href={project.githubLinks.frontend} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="bg-white text-gray-900 p-2 rounded-full hover:bg-portfolio-primary hover:text-white transition-colors"
+                                title="Frontend Repository"
+                              >
+                                <Github className="w-5 h-5" />
+                              </a>
+                            )}
+                            {project.githubLinks.backend && (
+                              <a 
+                                href={project.githubLinks.backend} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="bg-white text-gray-900 p-2 rounded-full hover:bg-portfolio-primary hover:text-white transition-colors"
+                                title="Backend Repository"
+                              >
+                                <Github className="w-5 h-5" />
+                              </a>
+                            )}
+                          </>
+                        ) : project.githubLink && (
                           <a 
                             href={project.githubLink} 
                             target="_blank" 

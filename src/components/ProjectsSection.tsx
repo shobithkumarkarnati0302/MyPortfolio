@@ -46,7 +46,7 @@ const ProjectsSection = () => {
       id: 2,
       title: "CodeOscan - AI Code Analyzer",
       description: "Full-stack AI-powered code analysis platform that leverages Google Generative AI to provide intelligent code evaluation, complexity assessment, and optimization recommendations for 13+ programming languages.",
-      image: "https://en.idei.club/uploads/posts/2023-03/1679504314_en-idei-club-p-programmer-wallpaper-dizain-vkontakte-4.jpg",
+      image: "/codeoscan.png",
       techStack: ["React 19", "Node.js", "Express.js", "MongoDB", "Google Generative AI", "Tailwind CSS", "JWT", "Vite"],
       features: [
         "AI-Powered Code Analysis with Google Generative AI",

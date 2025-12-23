@@ -67,7 +67,7 @@ const HeroSection = () => {
               className="border-portfolio-primary text-portfolio-primary hover:bg-portfolio-primary hover:text-white transition-all duration-300 transform hover:scale-105"
               asChild
             >
-              <a href="/Karnati-Shobith-Kumar.pdf" target="_blank" rel="noopener noreferrer">
+              <a href="/Karnati Shobith Kumar - Resume.pdf" target="_blank" rel="noopener noreferrer">
                 View Resume
               </a>
             </Button>

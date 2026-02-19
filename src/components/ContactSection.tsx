@@ -73,13 +73,13 @@ const ContactSection = () => {
     {
       icon: <Phone className="w-5 h-5" />,
       label: "Phone",
-      value: "(+91) 9393023***",
+      value: "(+91) 9393023900",
       link: "tel:+919393023900"
     },
     {
       icon: <MapPin className="w-5 h-5" />,
       label: "Location",
-      value: "Vadodara, Gujarat, India"
+      value: "Hyderabad, Telangana, India"
     }
   ];
 

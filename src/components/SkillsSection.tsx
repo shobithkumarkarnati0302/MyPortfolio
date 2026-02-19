@@ -77,6 +77,18 @@ const skills: Skill[] = [
     category   : ["tools", "backend"],
     icon       : "https://cdn.simpleicons.org/n8n",
   },
+  {
+    name       : "React Native",
+    proficiency: 80,
+    category   : ["frontend"],
+    icon       : "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  },
+  {
+    name       : "TypeScript",
+    proficiency: 80,
+    category   : ["frontend"],
+    icon       : "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  },
 ];
 
 const SkillsSection = () => {

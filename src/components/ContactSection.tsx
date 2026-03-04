@@ -1,10 +1,10 @@
-import { useState, useRef } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { useToast } from '@/components/ui/use-toast';
-import emailjs from '@emailjs/browser';
+import { useState, useRef } from "react";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { useToast } from "@/components/ui/use-toast";
+import emailjs from "@emailjs/browser";
 
 interface ContactFormData {
   name: string;
@@ -20,47 +20,54 @@ const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 const ContactSection = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState<ContactFormData>({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useRef<HTMLFormElement>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const sendEmail = (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.current) return;
-    emailjs.sendForm(
-      serviceId,
-      templateId,
-      form.current,
-      publicKey
-    )
-    .then((result) => {
-      toast({
-        title: "Message sent successfully!",
-        description: "Thank you for reaching out. I'll get back to you soon.",
+    setIsSubmitting(true);
+    emailjs
+      .sendForm(serviceId, templateId, form.current, publicKey)
+      .then(
+        (result) => {
+          toast({
+            title: "Message sent successfully!",
+            description:
+              "Thank you for reaching out. I'll get back to you soon.",
+          });
+          setFormData({
+            name   : "",
+            email  : "",
+            subject: "",
+            message: "",
+          });
+        },
+        (error) => {
+          console.error("Error submitting message:", error);
+          toast({
+            title: "Failed to send message",
+            description:
+              "There was an error sending your message. Please try again later.",
+            variant: "destructive",
+          });
+        },
+      )
+      .finally(() => {
+        setIsSubmitting(false);
       });
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
-      });
-    }, (error) => {
-      console.error('Error submitting message:', error);
-      toast({
-        title: "Failed to send message",
-        description: "There was an error sending your message. Please try again later.",
-        variant: "destructive",
-      });
-    });
   };
 
   const contactInfo = [
@@ -68,19 +75,19 @@ const ContactSection = () => {
       icon: <Mail className="w-5 h-5" />,
       label: "Email",
       value: "shobithkumar2304@gmail.com",
-      link: "mailto:shobithkumar2304@gmail.com"
+      link: "mailto:shobithkumar2304@gmail.com",
     },
     {
       icon: <Phone className="w-5 h-5" />,
       label: "Phone",
       value: "(+91) 9393023900",
-      link: "tel:+919393023900"
+      link: "tel:+919393023900",
     },
     {
       icon: <MapPin className="w-5 h-5" />,
       label: "Location",
-      value: "Hyderabad, Telangana, India"
-    }
+      value: "Hyderabad, Telangana, India",
+    },
   ];
 
   return (
@@ -92,7 +99,8 @@ const ContactSection = () => {
           </h2>
           <div className="w-20 h-1 bg-portfolio-primary mx-auto rounded-full mb-6"></div>
           <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Feel free to reach out to me for any questions, opportunities, or just to say hello!
+            Feel free to reach out to me for any questions, opportunities, or
+            just to say hello!
           </p>
         </div>
 
@@ -109,7 +117,9 @@ const ContactSection = () => {
                     {info.icon}
                   </div>
                   <div>
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white">{info.label}</h4>
+                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
+                      {info.label}
+                    </h4>
                     {info.link ? (
                       <a
                         href={info.link}
@@ -118,7 +128,9 @@ const ContactSection = () => {
                         {info.value}
                       </a>
                     ) : (
-                      <p className="text-gray-600 dark:text-gray-400">{info.value}</p>
+                      <p className="text-gray-600 dark:text-gray-400">
+                        {info.value}
+                      </p>
                     )}
                   </div>
                 </div>
@@ -134,7 +146,10 @@ const ContactSection = () => {
             <form ref={form} onSubmit={sendEmail} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label htmlFor="name" className="text-gray-700 dark:text-gray-300 font-medium">
+                  <label
+                    htmlFor="name"
+                    className="text-gray-700 dark:text-gray-300 font-medium"
+                  >
                     Your Name
                   </label>
                   <Input
@@ -149,7 +164,10 @@ const ContactSection = () => {
                 </div>
 
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-gray-700 dark:text-gray-300 font-medium">
+                  <label
+                    htmlFor="email"
+                    className="text-gray-700 dark:text-gray-300 font-medium"
+                  >
                     Your Email
                   </label>
                   <Input
@@ -166,7 +184,10 @@ const ContactSection = () => {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="subject" className="text-gray-700 dark:text-gray-300 font-medium">
+                <label
+                  htmlFor="subject"
+                  className="text-gray-700 dark:text-gray-300 font-medium"
+                >
                   Subject
                 </label>
                 <Input
@@ -181,7 +202,10 @@ const ContactSection = () => {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="message" className="text-gray-700 dark:text-gray-300 font-medium">
+                <label
+                  htmlFor="message"
+                  className="text-gray-700 dark:text-gray-300 font-medium"
+                >
                   Message
                 </label>
                 <Textarea
@@ -202,9 +226,25 @@ const ContactSection = () => {
               >
                 {isSubmitting ? (
                   <span className="flex items-center gap-2">
-                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    <svg
+                      className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                      ></path>
                     </svg>
                     Sending...
                   </span>

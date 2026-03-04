@@ -13,9 +13,70 @@ export interface Project {
   longDescription?: string;
   challenges?: string[];
   solutions?: string[];
+  gallery?: string[];
 }
 
 export const projects: Project[] = [
+  //FitnessApp
+  {
+    id: 1,
+    slug: "fitnessapp",
+    title: "Fitness Mobile Application",
+    description:
+      "A full-stack React Native fitness app built as part of an internship task, featuring JWT authentication, an 16-muscle-group exercise browser powered by API Ninjas, profile management, and a 30-day subscription tracker.",
+    longDescription:
+      "Fitness Mobile App is a cross-platform (Android & iOS) fitness application built with React Native and TypeScript. Users register with their physical stats (height, weight, age, gender), browse 16 muscle groups, and explore 100+ exercises fetched live from the API Ninjas Exercise API. The app persists sessions via AsyncStorage, protects routes based on JWT tokens, and includes a subscription progress bar tracking the user's 30-day free plan cycle. The backend is a Node.js/Express REST API with MongoDB and bcryptjs-hashed passwords.",
+    image:
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z3ltfGVufDB8fDB8fHww",
+    techStack: [
+      "React Native",
+      "TypeScript",
+      "Node.js",
+      "Express.js",
+      "MongoDB",
+      "JWT",
+      "Axios",
+    ],
+    features: [
+      "JWT Authentication with 7-day token expiry & AsyncStorage session persistence",
+      "16 Muscle Group Browser with live search & filtering",
+      "100+ Exercises fetched from API Ninjas Exercise API",
+      "Personalized time-based greeting (Morning / Afternoon / Evening)",
+      "Full Profile Management — view & edit height, weight, age, gender",
+      "30-Day Subscription Progress Bar",
+      "Protected Route Navigation (token-based Auth Guard)",
+      "Workout Detail Screen with exercise instructions & equipment info",
+      "Cross-platform support for Android & iOS",
+    ],
+    challenges: [
+      "Securely persisting JWT tokens and user session across app restarts without exposing them.",
+      "Integrating a third-party Exercise API while keeping API keys out of the source code.",
+      "Implementing a dynamic subscription progress bar that calculates elapsed days from the server-stored start date.",
+      "Showing up the Equipments, was confused whether the equipment is in the form of array or string",
+    ],
+    solutions: [
+      "Used AsyncStorage with an Axios request interceptor to automatically attach Bearer tokens to every API call.",
+      "Leveraged react-native-config and .env files to inject API_NINJAS_KEY and BASE_URL at build time.",
+      "Calculated subscription usage on the client side using the subscriptionStartDate field returned from MongoDB, enabling a live progress indicator with no extra API call.",
+      "Gone through the API Documentation and understood the API Structure and implemented it in the app.",
+    ],
+    gallery: [
+      "https://i.ibb.co/DPvxhm7N/Login-Screen-1.jpg",
+      "https://i.ibb.co/Fq7VXJxm/Login-Screen-2.jpg",
+      "https://i.ibb.co/WvjcDjG0/Register-Screen.jpg",
+      "https://github.com/user-attachments/assets/2127d04d-d09d-4eb9-a0a7-0a40b53d2bdc",
+      "https://i.ibb.co/Mx9fPTbr/Home-Screen-2.jpg",
+      "https://i.ibb.co/TxYBcmsX/Loading-Screen.jpg",
+      "https://i.ibb.co/gMGpGtFJ/Workout-List-Screen.jpg",
+      "https://i.ibb.co/C3bnK2pW/Workout-Detail-Screen.jpg",
+      "https://i.ibb.co/Ps896Dx4/Profile-Screen-1.jpg",
+      "https://i.ibb.co/35JC1wP6/Profile-Screen-2.jpg",
+      "https://i.ibb.co/pvLrV2xs/Edit-Profile-Screen.jpg",
+    ],
+    githubLink: "https://github.com/shobithkumarkarnati0302/FITNESS-MOBILE-APP",
+    liveLink: "https://github.com/shobithkumarkarnati0302/FITNESS-MOBILE-APP",
+  },
+  //curabot
   {
     id: 1,
     slug: "curabot",
@@ -55,6 +116,21 @@ export const projects: Project[] = [
       "Utilized Tailwind CSS's utility-first approach for rapid, responsive design.",
       "Employed code-splitting and lazy loading to enhance performance.",
     ],
+    gallery: [
+      "https://i.ibb.co/Y4cMYkjJ/Screenshot-2026-03-04-124943.png",
+      "https://i.ibb.co/C3WKj6vt/Screenshot-2026-03-04-124953.png",
+      "https://i.ibb.co/WWZ5RHdF/Screenshot-2026-03-04-125004.png",
+      "https://i.ibb.co/67mDj3qX/Screenshot-2026-03-04-125013.png",
+      "https://i.ibb.co/fGBYHRVk/Screenshot-2026-03-04-125124.png",
+      "https://i.ibb.co/KckWNVB1/Screenshot-2026-03-04-125132.png",
+      "https://i.ibb.co/4gNM7Cc2/Screenshot-2026-03-04-125142.png",
+      "https://i.ibb.co/q3LPY67W/Screenshot-2026-03-04-125152.png",
+      "https://i.ibb.co/V0ZG8wHm/Screenshot-2026-03-04-125201.png",
+      "https://i.ibb.co/TDPNDmFP/Screenshot-2026-03-04-125223.png",
+      "https://i.ibb.co/CsNcCvwW/Screenshot-2026-03-04-125231.png",
+      "https://i.ibb.co/RkvzwYp1/Screenshot-2026-03-04-125245.png",
+      "https://i.ibb.co/99GKCxNt/Screenshot-2026-03-04-125254.png",
+    ],
     githubLinks: {
       frontend:
         "https://github.com/shobithkumarkarnati0302/CuraBot-Frontend.git",
@@ -62,6 +138,7 @@ export const projects: Project[] = [
     },
     liveLink: "https://curabot-project.vercel.app/",
   },
+  //codeoscan
   {
     id: 2,
     slug: "codeoscan",
@@ -101,9 +178,23 @@ export const projects: Project[] = [
       "Used robust parsing libraries and syntax highlighters for secure code rendering.",
       "Created a resilient error handling system with user-friendly feedback.",
     ],
+    gallery: [
+      "https://i.ibb.co/Q7fncFgg/Screenshot-2026-03-04-130854.png",
+      "https://i.ibb.co/67d2fYkr/Screenshot-2026-03-04-130907.png",
+      "https://i.ibb.co/pBJb96PH/Screenshot-2026-03-04-130916.png",
+      "https://i.ibb.co/RpHsRcKf/Screenshot-2026-03-04-130922.png",
+      "https://i.ibb.co/cS0t3fws/Screenshot-2026-03-04-131046.png",
+      "https://i.ibb.co/xSWBKnFH/Screenshot-2026-03-04-131103.png",
+      "https://i.ibb.co/XrCpvb3B/Screenshot-2026-03-04-131210.png",
+      "https://i.ibb.co/JjHChCMq/Screenshot-2026-03-04-131236.png",
+      "https://i.ibb.co/qYcMq9Cw/Screenshot-2026-03-04-131250.png",
+      "https://i.ibb.co/0jYN9r82/Screenshot-2026-03-04-131309.png",
+      "https://i.ibb.co/vCxq9G24/Screenshot-2026-03-04-131335.png",
+    ],
     githubLink: "https://github.com/shobithkumarkarnati0302/CodeOscan",
     liveLink: "https://code-oscan.vercel.app/",
   },
+  //urlshortner
   {
     id: 3,
     slug: "urlshortner",
@@ -142,9 +233,15 @@ export const projects: Project[] = [
       "Optimized database indexing for fast lookups during redirection.",
       "Created a clean, card-based UI for managing links.",
     ],
+    gallery: [
+      "https://i.ibb.co/p6DkQCCp/Screenshot-2026-03-04-131820.png",
+      "https://i.ibb.co/ynmsFSkj/Screenshot-2026-03-04-131927.png",
+      "https://i.ibb.co/84gpcbh1/Screenshot-2026-03-04-131953.png",
+    ],
     githubLink: "https://github.com/shobithkumarkarnati0302/urlShortner",
     liveLink: "https://url-shortner-chi-green.vercel.app/",
   },
+  //spotify-clone
   {
     id: 4,
     slug: "spotify-clone",
@@ -173,6 +270,13 @@ export const projects: Project[] = [
       "Extensive use of CSS Grid and Flexbox for layout precision.",
       "Utilized the HTML5 Audio API for controlling media playback.",
       "Tested across multiple browsers to ensure consistent behavior.",
+    ],
+    gallery: [
+      "https://i.ibb.co/67SfPk81/Screenshot-2026-03-04-132153.png",
+      "https://i.ibb.co/3YBnqwSr/Screenshot-2026-03-04-132201.png",
+      "https://i.ibb.co/RTFjMCBr/Screenshot-2026-03-04-132209.png",
+      "https://i.ibb.co/FLP4J8vB/Screenshot-2026-03-04-132222.png",
+      "https://i.ibb.co/vx3zFNSn/Screenshot-2026-03-04-132240.png",
     ],
     githubLink: "https://github.com/shobithkumarkarnati0302/Spotify-Clone",
     liveLink: "https://spotify-clone-shobith.netlify.app/",

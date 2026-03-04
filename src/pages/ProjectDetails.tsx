@@ -14,6 +14,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { projects } from "@/data/projects";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 const ProjectDetails = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -22,10 +24,7 @@ const ProjectDetails = () => {
   const project = projects.find((p) => p.slug === slug);
 
   useEffect(() => {
-    // Scroll to top when page loads
     window.scrollTo(0, 0);
-
-    // Redirect if project not found
     if (!project) {
       navigate("/404");
     }
@@ -36,7 +35,7 @@ const ProjectDetails = () => {
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 pb-20">
       {/* Banner Section */}
-      <div className="relative h-[50vh] min-h-[400px] w-full overflow-hidden">
+      <div className="relative h-[55vh] min-h-[400px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-black/60 z-10" />
         <img
           src={project.image}
@@ -45,21 +44,15 @@ const ProjectDetails = () => {
         />
 
         {/* Back Button */}
-        <div className="absolute top-6 left-6 z-20">
-          <Button
-            variant="ghost"
-            className="text-white hover:bg-white/10 hover:text-white"
-            asChild
-          >
-            <Link to="/" className="flex items-center gap-2">
-              <ArrowLeft className="w-5 h-5" /> Back to Projects
-            </Link>
-          </Button>
-        </div>
+        <Button className="text-white hover:bg-white/90 hover:text-black absolute top-6 left-6 z-20">
+          <Link to="/" className="flex items-center gap-2">
+            <ArrowLeft className="w-5 h-5" /> Back to Projects
+          </Link>
+        </Button>
 
         <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 md:p-16 container mx-auto">
           <div className="animate-slide-up max-w-4xl">
-            <div className="flex flex-wrap items-center gap-3 mb-4">
+            {/* <div className="flex flex-wrap items-center gap-3 mb-4">
               <Badge className="bg-portfolio-primary/90 hover:bg-portfolio-primary text-white border-none shadow-lg backdrop-blur-sm scale-110">
                 Project Details
               </Badge>
@@ -71,7 +64,7 @@ const ProjectDetails = () => {
                   In Progress
                 </Badge>
               )}
-            </div>
+            </div> */}
             <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 shadow-black/50 drop-shadow-md leading-tight">
               {project.title}
             </h1>
@@ -166,6 +159,53 @@ const ProjectDetails = () => {
                   )}
                 </div>
               )}
+            </div>
+
+            {/* Project Gallery */}
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 border border-gray-100 dark:border-gray-700">
+              {project.gallery && (
+                <div className="animate-fade-in mb-10">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                    <span className="w-1.5 h-8 bg-portfolio-primary rounded-full inline-block"></span>
+                    Project Gallery
+                  </h3>
+                  {project.gallery.length === 0 ? (
+                    <p className="text-gray-600 dark:text-gray-300 text-lg">
+                      No images available for this project.
+                    </p>
+                  ) : project.slug === "fitnessapp" ? (
+                    <div>
+                      <div className = "grid grid-cols-3 md:grid-cols-3 gap-4">
+                        {project.gallery.map((image, i) => (
+                          <div key={i}>
+                            <img
+                              src={image}
+                              alt={project.title}
+                              className="w-full h-150 object-cover"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <Carousel>
+                        {project.gallery.map((image, i) => (
+                          <div key={i}>
+                            <img
+                              src={image}
+                              alt={project.title}
+                              className="w-full h-auto object-cover"
+                            />
+                          </div>
+                        ))}
+                      </Carousel>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <Separator className="my-10 bg-gray-100 dark:bg-gray-700" />
             </div>
           </div>
 

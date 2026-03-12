@@ -31,7 +31,7 @@ const EducationSection = () => {
       degree: "B.Tech in Computer Science & Engineering",
       location: "Vadodara, Gujarat",
       period: "2022 – 2026",
-      grade: "CGPA: 7.80",
+      grade: "CGPA: 7.83",
       description: "Currently pursuing a Bachelor's degree focusing on core computer science subjects, data structures, algorithms, and web development."
     },
     {

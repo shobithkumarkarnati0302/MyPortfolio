@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { projects } from "@/data/projects";
 import { Link } from "react-router-dom";
+import { MagneticButton } from "@/components/ui/magnetic-button";
 
 const ProjectsSection = () => {
   return (
@@ -42,49 +43,57 @@ const ProjectsSection = () => {
                         {project.githubLinks ? (
                           <>
                             {project.githubLinks.frontend && (
-                              <a
-                                href={project.githubLinks.frontend}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="bg-white text-gray-900 p-2 rounded-full hover:bg-portfolio-primary hover:text-white transition-colors"
-                                title="Frontend Repository"
-                              >
-                                <Github className="w-5 h-5" />
-                              </a>
+                              <MagneticButton>
+                                <a
+                                  href={project.githubLinks.frontend}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="bg-white text-gray-900 p-2 rounded-full hover:bg-portfolio-primary hover:text-white transition-colors block"
+                                  title="Frontend Repository"
+                                >
+                                  <Github className="w-5 h-5" />
+                                </a>
+                              </MagneticButton>
                             )}
                             {project.githubLinks.backend && (
-                              <a
-                                href={project.githubLinks.backend}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="bg-white text-gray-900 p-2 rounded-full hover:bg-portfolio-primary hover:text-white transition-colors"
-                                title="Backend Repository"
-                              >
-                                <Github className="w-5 h-5" />
-                              </a>
+                              <MagneticButton>
+                                <a
+                                  href={project.githubLinks.backend}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="bg-white text-gray-900 p-2 rounded-full hover:bg-portfolio-primary hover:text-white transition-colors block"
+                                  title="Backend Repository"
+                                >
+                                  <Github className="w-5 h-5" />
+                                </a>
+                              </MagneticButton>
                             )}
                           </>
                         ) : (
                           project.githubLink && (
-                            <a
-                              href={project.githubLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="bg-white text-gray-900 p-2 rounded-full hover:bg-portfolio-primary hover:text-white transition-colors"
-                            >
-                              <Github className="w-5 h-5" />
-                            </a>
+                            <MagneticButton>
+                              <a
+                                href={project.githubLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="bg-white text-gray-900 p-2 rounded-full hover:bg-portfolio-primary hover:text-white transition-colors block"
+                              >
+                                <Github className="w-5 h-5" />
+                              </a>
+                            </MagneticButton>
                           )
                         )}
                         {project.liveLink && (
-                          <a
-                            href={project.liveLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="bg-white text-gray-900 p-2 rounded-full hover:bg-portfolio-primary hover:text-white transition-colors"
-                          >
-                            <ExternalLink className="w-5 h-5" />
-                          </a>
+                          <MagneticButton>
+                            <a
+                              href={project.liveLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="bg-white text-gray-900 p-2 rounded-full hover:bg-portfolio-primary hover:text-white transition-colors block"
+                            >
+                              <ExternalLink className="w-5 h-5" />
+                            </a>
+                          </MagneticButton>
                         )}
                       </div>
                     </div>
@@ -139,40 +148,46 @@ const ProjectsSection = () => {
                 </div>
 
                 <div className="pt-4 flex flex-wrap gap-4">
-                  <Button
-                    variant="outline"
-                    className="border-portfolio-primary text-portfolio-primary hover:bg-portfolio-primary hover:text-white dark:hover:text-white"
-                    asChild
-                  >
-                    <Link to={`/project/${project.slug}`}>View Details</Link>
-                  </Button>
+                  <MagneticButton>
+                    <Button
+                      variant="outline"
+                      className="border-portfolio-primary text-portfolio-primary hover:bg-portfolio-primary hover:text-white dark:hover:text-white"
+                      asChild
+                    >
+                      <Link to={`/project/${project.slug}`}>View Details</Link>
+                    </Button>
+                  </MagneticButton>
 
                   {project.liveLink ? (
-                    <Button
-                      className="bg-portfolio-primary hover:bg-portfolio-secondary"
-                      asChild
-                    >
-                      <a
-                        href={project.liveLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <MagneticButton>
+                      <Button
+                        className="bg-portfolio-primary hover:bg-portfolio-secondary"
+                        asChild
                       >
-                        Visit Site <MoveRight className="ml-2 w-4 h-4" />
-                      </a>
-                    </Button>
+                        <a
+                          href={project.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Visit Site <MoveRight className="ml-2 w-4 h-4" />
+                        </a>
+                      </Button>
+                    </MagneticButton>
                   ) : (
-                    <Button
-                      className="bg-portfolio-primary hover:bg-portfolio-secondary"
-                      asChild
-                    >
-                      <a
-                        href={project.githubLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    <MagneticButton>
+                      <Button
+                        className="bg-portfolio-primary hover:bg-portfolio-secondary"
+                        asChild
                       >
-                        GitHub <Github className="ml-2 w-4 h-4" />
-                      </a>
-                    </Button>
+                        <a
+                          href={project.githubLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          GitHub <Github className="ml-2 w-4 h-4" />
+                        </a>
+                      </Button>
+                    </MagneticButton>
                   )}
                 </div>
               </div>

@@ -91,7 +91,7 @@ const AboutSection = () => {
                 </h4>
               </div>
               <p className="text-gray-600 dark:text-gray-400">
-                Pursuing B.Tech in Computer Science at Parul University with 7.80 CGPA.
+                Pursuing B.Tech in Computer Science at Parul University with 7.83 CGPA.
               </p>
             </div>
             
@@ -100,9 +100,9 @@ const AboutSection = () => {
               "hover:shadow-lg transition-all hover:translate-y-[-5px]",
               "border-l-4 border-portfolio-primary"
             )}>
-              <div className="flex items-center gap-4 mb-4">
-                <div className="bg-portfolio-light dark:bg-gray-700 p-3 rounded-full text-portfolio-primary">
-                  <Users className="w-6 h-6" />
+              <div   className = "flex items-center gap-4 mb-4">
+              <div   className = "bg-portfolio-light dark:bg-gray-700 p-3 rounded-full text-portfolio-primary">
+              <Users className = "w-6 h-6" />
                 </div>
                 <h4 className="text-xl font-semibold text-gray-900 dark:text-white">
                   Languages

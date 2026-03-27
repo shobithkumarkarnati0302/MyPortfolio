@@ -27,6 +27,7 @@ const Navbar = () => {
       const sections = [
         "home",
         "about",
+        "experience",
         "skills",
         "projects",
         "education",
@@ -136,7 +137,7 @@ const Navbar = () => {
               <Github className="w-5 h-5" />
             </a>
             <a
-              href="https://www.linkedin.com/in/shobithkarnati0302?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+              href="https://www.linkedin.com/in/shobithkarnati0302"
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 hover:text-portfolio-primary transition-all duration-300 transform hover:scale-110"
@@ -198,7 +199,7 @@ const Navbar = () => {
         </ul>
         <div className="mt-8 flex gap-6 items-center">
           <a
-            href="https://github.com/"
+            href="https://github.com/shobithkumarkarnati0302"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 hover:text-portfolio-primary transition-all duration-300 transform hover:scale-110"
@@ -207,7 +208,7 @@ const Navbar = () => {
             <Github className="w-6 h-6" />
           </a>
           <a
-            href="https://linkedin.com/"
+            href="https://www.linkedin.com/in/shobithkarnati0302"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-600 hover:text-portfolio-primary transition-all duration-300 transform hover:scale-110"

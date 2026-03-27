@@ -54,11 +54,11 @@ const EducationSection = () => {
 
   const certifications: Certification[] = [
     {
-      id: 1,
-      title: "The Full stack Web Development Bootcamp",
+      id    : 1,
+      title : "The Full stack Web Development Bootcamp",
       issuer: "Udemy",
-      date: "02/2024 – 05/2024",
-      link: "https://drive.google.com/file/d/134vH1DApB1tY-wR34VWDZWOmKDRtQWSn/view?usp=drive_link"
+      date  : "02/2024 – 05/2024",
+      link  : "https://drive.google.com/file/d/134vH1DApB1tY-wR34VWDZWOmKDRtQWSn/view?usp=drive_link"
     },
     {
       id: 2,
@@ -83,7 +83,6 @@ const EducationSection = () => {
     }
   ];
 
-  // Function to convert Google Drive view link to embed link
   const getEmbedLink = (link: string) => {
     const fileId = link.match(/\/d\/(.+?)\//)?.[1];
     if (fileId) {

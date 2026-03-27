@@ -16,6 +16,7 @@ import { Separator } from "@/components/ui/separator";
 import { projects } from "@/data/projects";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { PageTransition } from "@/components/ui/page-transition";
 
 const ProjectDetails = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -33,8 +34,9 @@ const ProjectDetails = () => {
   if (!project) return null;
 
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-900 pb-20">
-      {/* Banner Section */}
+    <PageTransition>
+      <div className="min-h-screen bg-white dark:bg-gray-900 pb-20">
+        {/* Banner Section */}
       <div className="relative h-[55vh] min-h-[400px] w-full overflow-hidden">
         <div className="absolute inset-0 bg-black/60 z-10" />
         <img
@@ -319,6 +321,7 @@ const ProjectDetails = () => {
         </div>
       </div>
     </div>
+    </PageTransition>
   );
 };
 

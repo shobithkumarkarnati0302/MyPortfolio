@@ -2,6 +2,7 @@ import { ArrowDown, Mail, Github, Linkedin, Code2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { Typewriter } from 'react-simple-typewriter';
+import { MagneticButton } from "@/components/ui/magnetic-button";
 
 
 const HeroSection = () => {
@@ -49,28 +50,24 @@ const HeroSection = () => {
             className="flex flex-wrap gap-4 justify-center lg:justify-start animate-slide-up"
             style={{ animationDelay: "300ms" }}
           >
-            <Button className="bg-portfolio-primary hover:bg-portfolio-secondary transition-all duration-300 transform hover:scale-105">
-              <Mail className="mr-2 h-4 w-4" />{" "}
-              <a href="mailto:shobithkumar2304@gmail.com">Contact Me</a>
-            </Button>
+            <MagneticButton>
+              <Button className="bg-portfolio-primary hover:bg-portfolio-secondary transition-colors duration-300 shadow-md">
+                <Mail className="mr-2 h-4 w-4" />{" "}
+                <a href="mailto:shobithkumar2304@gmail.com">Contact Me</a>
+              </Button>
+            </MagneticButton>
 
-            {/* <Button
-              variant="outline"
-              className="border-portfolio-primary text-portfolio-primary hover:bg-portfolio-primary hover:text-white transition-all duration-300 transform hover:scale-105"
-              onClick={handleDownload}
-            >
-              Download Resume
-            </Button> */}
-
-            <Button
-              variant="outline"
-              className="border-portfolio-primary text-portfolio-primary hover:bg-portfolio-primary hover:text-white transition-all duration-300 transform hover:scale-105"
-              asChild
-            >
-              <a href="/Karnati Shobith Kumar - Resume.pdf" target="_blank" rel="noopener noreferrer">
-                View Resume
-              </a>
-            </Button>
+            <MagneticButton>
+              <Button
+                variant="outline"
+                className="border-portfolio-primary text-portfolio-primary hover:bg-portfolio-primary hover:text-white transition-colors duration-300 shadow-sm"
+                asChild
+              >
+                <a href="/Karnati Shobith Kumar - Resume.pdf" target="_blank" rel="noopener noreferrer">
+                  View Resume
+                </a>
+              </Button>
+            </MagneticButton>
           </div>
           
 

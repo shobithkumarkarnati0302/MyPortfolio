@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Copy, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -26,7 +26,16 @@ const ContactSection = () => {
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
   const form = useRef<HTMLFormElement>(null);
+
+  const copyToClipboard = (value: string, label: string) => {
+    navigator.clipboard.writeText(value).then(() => {
+      setCopiedKey(label);
+      toast({ title: `${label} copied!`});
+      setTimeout(() => setCopiedKey(null), 2000);
+    });
+  };
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -76,17 +85,20 @@ const ContactSection = () => {
       label: "Email",
       value: "shobithkumar2304@gmail.com",
       link: "mailto:shobithkumar2304@gmail.com",
+      copyable: true,
     },
     {
       icon: <Phone className="w-5 h-5" />,
       label: "Phone",
       value: "(+91) 9393023900",
       link: "tel:+919393023900",
+      copyable: true,
     },
     {
       icon: <MapPin className="w-5 h-5" />,
       label: "Location",
       value: "Hyderabad, Telangana, India",
+      copyable: false,
     },
   ];
 
@@ -120,18 +132,34 @@ const ContactSection = () => {
                     <h4 className="text-lg font-semibold text-gray-900 dark:text-white">
                       {info.label}
                     </h4>
-                    {info.link ? (
-                      <a
-                        href={info.link}
-                        className="text-gray-600 dark:text-gray-400 hover:text-portfolio-primary transition-colors"
-                      >
-                        {info.value}
-                      </a>
-                    ) : (
-                      <p className="text-gray-600 dark:text-gray-400">
-                        {info.value}
-                      </p>
-                    )}
+                    <div className="flex items-center gap-2">
+                      {info.link ? (
+                        <a
+                          href={info.link}
+                          className="text-gray-600 dark:text-gray-400 hover:text-portfolio-primary transition-colors"
+                        >
+                          {info.value}
+                        </a>
+                      ) : (
+                        <p className="text-gray-600 dark:text-gray-400">
+                          {info.value}
+                        </p>
+                      )}
+                      {info.copyable && (
+                        <button
+                          onClick={() => copyToClipboard(info.value, info.label)}
+                          className="text-gray-400 hover:text-portfolio-primary transition-colors duration-200 p-1 rounded"
+                          aria-label={`Copy ${info.label}`}
+                          title={`Copy ${info.label}`}
+                        >
+                          {copiedKey === info.label ? (
+                            <Check className="w-4 h-4 text-green-500" />
+                          ) : (
+                            <Copy className="w-4 h-4" />
+                          )}
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
